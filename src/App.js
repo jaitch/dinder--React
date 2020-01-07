@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './pan-icon-3.png';
 import DataViz from './components/DataViz';
 import './App.css';
 
@@ -16,7 +16,9 @@ class App extends Component {
     return (
       <main className='App'>
         <header className='App-header'>
-          Match. Select. Taste.
+          <img src={logo} className='App-logo' alt="logo"/>
+          <h6 className='App-brand'>dinder</h6>
+          <h1 className='App-title'>Match. Cook. Eat.</h1>
         </header>
         <body className='App-body'>
 
