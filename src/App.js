@@ -11,7 +11,7 @@ class App extends Component {
   }
 
   render() {
-
+    const BASE_URL = 'localhost:5000'
 
     return (
       <main className='App'>
@@ -21,7 +21,7 @@ class App extends Component {
           <h1 className='App-title'>Match. Cook. Eat.</h1>
         </header>
         <body className='App-body'>
-
+          <DataViz url={BASE_URL}/>
         </body>
         <footer>
 
