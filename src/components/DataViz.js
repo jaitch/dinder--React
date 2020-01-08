@@ -7,13 +7,13 @@ class DataViz extends Component {
     super();
     this.state = {
       soughtIngredient: '',
-      foundIngredient: '',
+      foundIngredient_id: '',
       error: '',
     }
   }
 
   onInputChange = (event) => {
-    console.log(this.state.query)
+    console.log(`former sought ingredient space: ${this.state.soughtIngredient}`)
     this.setState({
       soughtIngredient: event.target.value,
     });
@@ -25,7 +25,9 @@ class DataViz extends Component {
     axios.get(`${this.props.url}/ingredient/${this.state.soughtIngredient}`)
       .then((response) => {
         console.log(response.data)
-        this.setState({foundIngredient: response.data });
+        const ingredient = response.data.data[0]
+        console.log(`ingredient_id: ${ingredient.id}`)
+        this.setState({foundIngredient_id: ingredient.id });
       })
       .catch((errors) => {
         this.setState({ error: errors.title });
@@ -34,7 +36,7 @@ class DataViz extends Component {
       // If I have time: use Feedback to display 'No Search Results' message
 
       this.setState({
-        query: '',
+        soughtIngredient: '',
       });
     }
 
@@ -64,7 +66,7 @@ class DataViz extends Component {
           </div>
         </form>
 
-        <p>{this.state.foundIngredient}</p>
+        <p>{this.state.foundIngredient_id}</p>
       </div>
     )
   }
