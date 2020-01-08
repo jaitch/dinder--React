@@ -26,7 +26,7 @@
 .App-logo {
   height: 150px;
   position: absolute;
-  top: 25px;
+  top: 60px;
   left: 65px;
 }
 
@@ -38,14 +38,17 @@
 }
 
 .App-title {
-  font-size: calc(50px + 2vmin);
-  padding-top: 100px;
+  font-size: calc(130px + 2vmin);
+  position: absolute;
+  left: 250px;
+  top: -30px;
 }
 
 .App-subtitle {
-  font-size: .75em;
-  padding-top: 0px;
-  padding-bottom: 75px;
+  font-size: 1em;
+  position: absolute;
+  right: 75px;
+  top: 150px;
   color: black
 }
 
