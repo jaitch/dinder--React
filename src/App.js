@@ -17,8 +17,8 @@ class App extends Component {
       <main className='App'>
         <header className='App-header'>
           <img src={logo} className='App-logo' alt="logo"/>
-          <h6 className='App-brand'>dinder</h6>
-          <h1 className='App-title'>Match. Cook. Eat.</h1>
+          <h1 className='App-title'>dinder</h1>
+          <p className='App-subtitle'>The Ingredient Matchmaker</p>
         </header>
         <body className='App-body'>
           <DataViz url={BASE_URL}/>
