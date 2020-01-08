@@ -7,6 +7,7 @@ class DataViz extends Component {
     super();
     this.state = {
       soughtIngredient: '',
+      foundIngredient: '',
       error: '',
     }
   }
@@ -16,14 +17,15 @@ class DataViz extends Component {
     this.setState({
       soughtIngredient: event.target.value,
     });
-    console.log(`updated: ${this.state.query}`)
+    console.log(`updated: ${this.state.soughtIngredient}`)
   }
 
   onSubmit = (event) => {
     event.preventDefault();
-    axios.get(`${this.props.url}/ingredient/${this.state.query}`)
+    axios.get(`${this.props.url}/ingredient/${this.state.soughtIngredient}`)
       .then((response) => {
-        this.setState({soughtIngredient: response.data });
+        console.log(response.data)
+        this.setState({foundIngredient: response.data });
       })
       .catch((errors) => {
         this.setState({ error: errors.title });
@@ -50,7 +52,7 @@ class DataViz extends Component {
               placeholder="ingredient"
               name="ingredient"
               onChange={this.onInputChange}
-              value={this.state.query}>
+              value={this.state.soughtIngredient}>
             </input>
           </div>
 
@@ -58,9 +60,11 @@ class DataViz extends Component {
             <input
               type="submit"
               value="Search"
-              onClick={this.onSubmit} className="submit-btn heart"/>
+              onClick={this.onSubmit} className="submit-btn"/>
           </div>
         </form>
+
+        <p>{this.state.foundIngredient}</p>
       </div>
     )
   }

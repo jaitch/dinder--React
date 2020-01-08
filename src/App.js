@@ -11,22 +11,22 @@ class App extends Component {
   }
 
   render() {
-    const BASE_URL = 'localhost:5000'
+    const BASE_URL = 'http://localhost:5000'
 
     return (
-      <main className='App'>
+      <div className='App'>
         <header className='App-header'>
           <img src={logo} className='App-logo' alt="logo"/>
           <h1 className='App-title'>dinder</h1>
           <p className='App-subtitle'>The Ingredient Matchmaker</p>
         </header>
-        <body className='App-body'>
+        <main className='App-body'>
           <DataViz url={BASE_URL}/>
-        </body>
+        </main>
         <footer>
 
         </footer>
-      </main>
+      </div>
     );
   }
 }
