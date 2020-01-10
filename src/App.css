@@ -40,8 +40,8 @@
 .App-title {
   font-size: calc(130px + 2vmin);
   position: absolute;
-  left: 250px;
-  top: -30px;
+  left: 225px;
+  top: -35px;
 }
 
 .App-subtitle {
