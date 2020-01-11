@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <style>
   .links line {
-    stroke: #999;
+    stroke: rgb(80, 194, 228);
     stroke-opacity: 0.6;
   }
 
@@ -48,6 +48,7 @@ const node = svg.append("g")
   .enter()
   .append("circle")
   .attr("r", 30)
+  //change this size r to closely match similarity number; use circle color to indicate searched-for ingredient (similarity of 1 or this.state)
   .attr("fill", circleColor);
 
 const textElements = svg.append('g')
@@ -88,25 +89,25 @@ const link = svg.append("g")
   .selectAll("line")
   .data(links_data)
   .enter().append("line")
-    .attr("stroke-width", 2)
-    .style("stroke", linkColor);
+    .attr("stroke-width", linkWidth)
+    // .style("stroke", black);
     //  make line thicker (stroke-width) for stronger similarity
 
 function circleColor(d){
   console.log(d);
     if(d.name.length <= 7){
-    return "green";
+    return "#fd267d";
   } else {
-    return "blue";
+    return "#ff7854";
   }
 }
 
-function linkColor(d) {
+function linkWidth(d) {
   console.log(d);
   if(d.strength >= 0.01) {
-    return "red";
+    return "7";
   } else {
-    return "pink";
+    return "2";
   }
 }
 

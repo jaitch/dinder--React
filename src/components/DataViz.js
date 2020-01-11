@@ -71,7 +71,6 @@ class DataViz extends Component {
 
         <p>{this.state.foundIngredient_id}</p>
         <NetworkGraph/>
-        {/* import * as d3 from 'd3' */}
       </div>
     )
   }
