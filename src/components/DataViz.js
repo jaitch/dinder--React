@@ -68,15 +68,16 @@ class DataViz extends Component {
               onClick={this.onSubmit} className="submit-btn"/>
           </div>
         </form>
-
-        <p>{this.state.foundIngredient_id}</p>
-        <NetworkGraph/>
+      <div>
+        <NetworkGraph ingredient={this.state.foundIngredient_id}/>
       </div>
+    </div>
     )
   }
 }
 
 DataViz.propTypes = {
   url: PropTypes.string.isRequired,
-}
+};
+
 export default DataViz;
