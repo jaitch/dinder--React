@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import NetworkGraph from './NetworkGraph.js'
+import NetworkGraph from './NetworkGraph'
 import './DataViz.css'
 
 
@@ -70,7 +70,8 @@ class DataViz extends Component {
         </form>
 
         <p>{this.state.foundIngredient_id}</p>
-        {/* <NetworkGraph ingredient=this.state.foundIngredient_id/> */}
+        <NetworkGraph/>
+        {/* import * as d3 from 'd3' */}
       </div>
     )
   }
