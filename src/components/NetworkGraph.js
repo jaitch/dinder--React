@@ -29,8 +29,7 @@ class NetworkGraph extends Component {
     .nodes(this.state.nodes_data);
 
     simulation
-      .force("charge_force", d3.forceManyBody().strength(-900))
-      // .force("charge_force", d3.forceManyBody().distanceMin(500))
+      .force("charge_force", d3.forceManyBody().strength(-2000))
       .force("center_force", d3.forceCenter(width / 2, height / 2))
 
     const node = svg.append("g")
@@ -39,9 +38,9 @@ class NetworkGraph extends Component {
       .data(this.state.nodes_data)
       .enter()
       .append("circle")
-      .attr("r", 30)
-      //change this size r to closely match similarity number; use circle color to indicate searched-for ingredient (similarity of 1 or this.state)
-      .attr("fill", circleColor);
+      .attr("r", 40)
+      .attr("fill", circleColor)
+      .style("stroke", 'black')
 
     const textElements = svg.append('g')
       .selectAll('text')
@@ -65,8 +64,7 @@ class NetworkGraph extends Component {
       .data(this.state.links_data)
       .enter().append("line")
         .attr("stroke-width", linkWidth)
-        // .style("stroke", black);
-        //  make line thicker (stroke-width) for stronger similarity
+
 
     function circleColor(d){
       console.log(d);
@@ -76,6 +74,10 @@ class NetworkGraph extends Component {
         return "#ff7854";
       }
     }
+
+  // function circleSize(d){
+
+  // }
 
     function linkWidth(d) {
       console.log(d);
@@ -104,10 +106,10 @@ class NetworkGraph extends Component {
   componentDidUpdate() {
 
   }
-  
+
   render() {
     return (
-      <svg width="960" height="600">
+      <svg width="1000" height="600">
         <g ref='graph'/>
       </svg>
     );
