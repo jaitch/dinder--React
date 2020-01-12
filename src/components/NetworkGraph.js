@@ -20,11 +20,10 @@ class NetworkGraph extends Component {
   }
 
   drawGraph() {
-    // const src="d3.v4.min.js"
 
     const svg = d3.select("svg"),
-    width = +svg.attr("960"),
-    height = +svg.attr("600");
+      width = +svg.attr("width"),
+      height = +svg.attr("height");
 
     const simulation = d3.forceSimulation()
     .nodes(this.state.nodes_data);
@@ -105,9 +104,10 @@ class NetworkGraph extends Component {
   componentDidUpdate() {
 
   }
+  
   render() {
     return (
-      <svg >
+      <svg width="960" height="600">
         <g ref='graph'/>
       </svg>
     );
