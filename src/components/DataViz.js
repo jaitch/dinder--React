@@ -7,12 +7,12 @@ import './DataViz.css'
 
 class DataViz extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       soughtIngredient: '',
       foundIngredient_id: '',
-      nodes_data: '',
-      links_data: '',
+      nodes_data: [],
+      links_data: [],
       error: '',
     }
   }
@@ -20,8 +20,8 @@ class DataViz extends Component {
   componentDidMount() {
     axios.get(`${this.props.url}/json/nodes.json`)
     .then((response) => {
-      this.setState({nodes_data: response });
-      console.log(response)
+      this.setState({nodes_data: response.data });
+      console.log(this.state.nodes_data)
     })
     .catch((error) => {
       this.setState({ error: error });
@@ -30,8 +30,8 @@ class DataViz extends Component {
 
     axios.get(`${this.props.url}/json/links.json`)
     .then((response) => {
-      this.setState({nodes_data: response });
-      console.log(response)
+      this.setState({links_data: response.data });
+      console.log(this.state.links_data)
     })
     .catch((error) => {
       this.setState({ error: error });

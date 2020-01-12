@@ -5,26 +5,19 @@ import './NetworkGraph.css'
 
 
 class NetworkGraph extends Component {
-  constructor(props) {
-    super();
-    this.state = {
-      nodes_data: props.nodes,
-      links_data: props.links,
-      error: '',
-    }
-  };
 
   componentDidMount() {
-    this.drawGraph();
+    console.log(this.props.nodes)
+    this.drawGraph(this.props.nodes, this.props.links);
   }
 
-  drawGraph() {
+  drawGraph(nodes, links) {
     const svg = d3.select("svg"),
       width = +svg.attr("width"),
       height = +svg.attr("height");
 
     const simulation = d3.forceSimulation()
-    .nodes(this.state.nodes_data);
+    .nodes(nodes);
 
     simulation
       .force("charge_force", d3.forceManyBody().strength(-2000))
@@ -33,7 +26,7 @@ class NetworkGraph extends Component {
     const node = svg.append("g")
       .attr("class", "nodes")
       .selectAll("circle")
-      .data(this.state.nodes_data)
+      .data(nodes)
       .enter()
       .append("circle")
       .attr("r", 40)
@@ -42,7 +35,7 @@ class NetworkGraph extends Component {
 
     const textElements = svg.append('g')
       .selectAll('text')
-      .data(this.state.nodes_data)
+      .data(nodes)
       .enter().append('text')
         .text(node => node.name)
         .attr('font-size', 20)
@@ -51,7 +44,7 @@ class NetworkGraph extends Component {
 
     simulation.on("tick", tickActions );
 
-    const link_force =  d3.forceLink(this.state.links_data)
+    const link_force =  d3.forceLink(links)
       .id(function(d) { return d.id; })
 
     simulation.force("links",link_force)
@@ -59,10 +52,9 @@ class NetworkGraph extends Component {
     const link = svg.append("g")
         .attr("class", "links")
       .selectAll("line")
-      .data(this.state.links_data)
+      .data(links)
       .enter().append("line")
         .attr("stroke-width", linkWidth)
-
 
     function circleColor(d){
       console.log(d);
