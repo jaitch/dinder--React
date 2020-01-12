@@ -5,6 +5,7 @@
   transition: 0.25s;
   padding: 10px 20px;
   text-align: center;
+  font-size: 1em;
   text-decoration: none;
   display: inline-block;
   margin: 4px 2px;
@@ -16,3 +17,6 @@
   background-color:#fd267d;
 }
 
+.text {
+  font-size: 2em;
+}
