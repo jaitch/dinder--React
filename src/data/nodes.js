@@ -1,6 +1,7 @@
-// export default
+export default
 
-  const nodes_data = [
+  // const nodes_data =
+  [
     { "id": 528, "name": "all-purpose flour" },
     { "id": 531, "name": "milk" },
     { "id": 534, "name": "butter" },
