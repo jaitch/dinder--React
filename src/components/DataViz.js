@@ -75,7 +75,7 @@ class DataViz extends Component {
           <div className="search-box">
             <label className="text" htmlFor="text">Start with an ingredient: </label>
           </div>
-          <div>
+          <div className="search-box">
             <input
               type="text"
               placeholder="ingredient"
