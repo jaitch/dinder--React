@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import * as d3 from 'd3';
 import PropTypes from 'prop-types';
 import './NetworkGraph.css'
+import nodes from '../data/nodes';
+import links from '../data/links';
 
 
 class NetworkGraph extends Component {
 
   componentDidMount() {
-    console.log(this.props.nodes)
-    this.drawGraph(this.props.nodes, this.props.links);
+    // console.log(this.props.nodes)
+    this.drawGraph(nodes, links);
   }
 
   drawGraph(nodes, links) {

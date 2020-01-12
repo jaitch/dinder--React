@@ -17,27 +17,27 @@ class DataViz extends Component {
     }
   }
 
-  componentDidMount() {
-    axios.get(`${this.props.url}/json/nodes.json`)
-    .then((response) => {
-      this.setState({nodes_data: response.data });
-      console.log(this.state.nodes_data)
-    })
-    .catch((error) => {
-      this.setState({ error: error });
-      console.log(error)
-    });
+  // componentDidMount() {
+  //   axios.get(`${this.props.url}/json/nodes.json`)
+  //   .then((response) => {
+  //     this.setState({nodes_data: response.data });
+  //     console.log(this.state.nodes_data)
+  //   })
+  //   .catch((error) => {
+  //     this.setState({ error: error });
+  //     console.log(error)
+  //   });
 
-    axios.get(`${this.props.url}/json/links.json`)
-    .then((response) => {
-      this.setState({links_data: response.data });
-      console.log(this.state.links_data)
-    })
-    .catch((error) => {
-      this.setState({ error: error });
-      console.log(error)
-    })
-  }
+  //   axios.get(`${this.props.url}/json/links.json`)
+  //   .then((response) => {
+  //     this.setState({links_data: response.data });
+  //     console.log(this.state.links_data)
+  //   })
+  //   .catch((error) => {
+  //     this.setState({ error: error });
+  //     console.log(error)
+  //   })
+  // }
 
   onInputChange = (event) => {
     console.log(`former sought ingredient space: ${this.state.soughtIngredient}`)
