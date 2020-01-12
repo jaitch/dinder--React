@@ -69,7 +69,7 @@ class DataViz extends Component {
           </div>
         </form>
       <div>
-        <NetworkGraph ingredient={this.state.foundIngredient_id}/>
+        <NetworkGraph ingredient={this.state.foundIngredient_id} url={this.props.url}/>
       </div>
     </div>
     )

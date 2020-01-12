@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import nodes from '../data/nodes';
-import links from '../data/links';
+// import nodes from '../data/nodes';
+// import links from '../data/links';
 import * as d3 from 'd3';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import './NetworkGraph.css'
 
@@ -10,17 +11,40 @@ class NetworkGraph extends Component {
   constructor(props) {
     super();
     this.state = {
-      nodes_data: nodes,
-      links_data: links,
+      nodes_data: '',
+      links_data: '',
+      error: '',
     }
   };
 
   componentDidMount() {
-    this.drawGraph();
+    axios.get(`${this.props.url}/json/nodes.json`)
+    .then((response) => {
+      this.setState({nodes_data: response });
+      console.log(response)
+    })
+    .catch((error) => {
+      this.setState({ error: error });
+      console.log(error)
+    });
+
+    axios.get(`${this.props.url}/json/links.json`)
+    .then((response) => {
+      this.setState({nodes_data: response });
+      console.log(response)
+    })
+    .catch((error) => {
+      this.setState({ error: error });
+      console.log(error)
+    })
+  }
+  componentDidUpdate(prevState) {
+    if (this.state.nodes_data !== prevState.nodes_data){
+      this.drawGraph()
+    }
   }
 
   drawGraph() {
-
     const svg = d3.select("svg"),
       width = +svg.attr("width"),
       height = +svg.attr("height");
@@ -119,6 +143,8 @@ class NetworkGraph extends Component {
 
 NetworkGraph.propTypes = {
   ingredient: PropTypes.number.isRequired,
+  url: PropTypes.string.isRequired,
 }
 export default NetworkGraph;
 
+// based on source: https://tomroth.com.au/fdg-basics/
