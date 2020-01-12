@@ -11,8 +11,32 @@ class DataViz extends Component {
     this.state = {
       soughtIngredient: '',
       foundIngredient_id: '',
+      nodes_data: '',
+      links_data: '',
       error: '',
     }
+  }
+
+  componentDidMount() {
+    axios.get(`${this.props.url}/json/nodes.json`)
+    .then((response) => {
+      this.setState({nodes_data: response });
+      console.log(response)
+    })
+    .catch((error) => {
+      this.setState({ error: error });
+      console.log(error)
+    });
+
+    axios.get(`${this.props.url}/json/links.json`)
+    .then((response) => {
+      this.setState({nodes_data: response });
+      console.log(response)
+    })
+    .catch((error) => {
+      this.setState({ error: error });
+      console.log(error)
+    })
   }
 
   onInputChange = (event) => {
@@ -69,7 +93,7 @@ class DataViz extends Component {
           </div>
         </form>
       <div>
-        <NetworkGraph ingredient={this.state.foundIngredient_id} url={this.props.url}/>
+        <NetworkGraph ingredient={this.state.foundIngredient_id} nodes={this.state.nodes_data} links={this.state.links_data}/>
       </div>
     </div>
     )

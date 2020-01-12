@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-// import nodes from '../data/nodes';
-// import links from '../data/links';
 import * as d3 from 'd3';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 import './NetworkGraph.css'
 
@@ -11,37 +8,14 @@ class NetworkGraph extends Component {
   constructor(props) {
     super();
     this.state = {
-      nodes_data: '',
-      links_data: '',
+      nodes_data: props.nodes,
+      links_data: props.links,
       error: '',
     }
   };
 
   componentDidMount() {
-    axios.get(`${this.props.url}/json/nodes.json`)
-    .then((response) => {
-      this.setState({nodes_data: response });
-      console.log(response)
-    })
-    .catch((error) => {
-      this.setState({ error: error });
-      console.log(error)
-    });
-
-    axios.get(`${this.props.url}/json/links.json`)
-    .then((response) => {
-      this.setState({nodes_data: response });
-      console.log(response)
-    })
-    .catch((error) => {
-      this.setState({ error: error });
-      console.log(error)
-    })
-  }
-  componentDidUpdate(prevState) {
-    if (this.state.nodes_data !== prevState.nodes_data){
-      this.drawGraph()
-    }
+    this.drawGraph();
   }
 
   drawGraph() {
@@ -142,8 +116,9 @@ class NetworkGraph extends Component {
 
 
 NetworkGraph.propTypes = {
-  ingredient: PropTypes.number.isRequired,
-  url: PropTypes.string.isRequired,
+  ingredient:PropTypes.string.isRequired,
+  // nodes:
+  // links:
 }
 export default NetworkGraph;
 
