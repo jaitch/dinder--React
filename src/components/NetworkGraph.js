@@ -6,14 +6,17 @@ import './NetworkGraph.css'
 class NetworkGraph extends Component {
 
   componentDidMount() {
-    // console.log(this.props.nodes)
+    this.drawGraph(this.props.nodes, this.props.links);
+  }
+
+  componentDidUpdate() {
     this.drawGraph(this.props.nodes, this.props.links);
   }
 
   drawGraph(nodes, links) {
     const svg = d3.select("svg"),
-      width = +svg.attr("width"),
-      height = +svg.attr("height");
+    width = +svg.attr("width"),
+    height = +svg.attr("height");
 
     const simulation = d3.forceSimulation()
     .nodes(nodes);
@@ -22,7 +25,9 @@ class NetworkGraph extends Component {
       .force("charge_force", d3.forceManyBody().strength(-2000))
       .force("center_force", d3.forceCenter(width / 2, height / 2))
 
-    const node = svg.append("g")
+    const group = d3.select(this.refs.graph)
+
+    const node = group
       .attr("class", "nodes")
       .selectAll("circle")
       .data(nodes)
@@ -32,7 +37,7 @@ class NetworkGraph extends Component {
       .attr("fill", circleColor)
       .style("stroke", 'black')
 
-    const textElements = svg.append('g')
+    const textElements = group
       .selectAll('text')
       .data(nodes)
       .enter().append('text')
@@ -48,7 +53,7 @@ class NetworkGraph extends Component {
 
     simulation.force("links",link_force)
 
-    const link = svg.append("g")
+    const link = group
         .attr("class", "links")
       .selectAll("line")
       .data(links)
@@ -92,14 +97,11 @@ class NetworkGraph extends Component {
     }
   }
 
-  componentDidUpdate() {
-
-  }
 
   render() {
     return (
       <svg width="1000" height="600">
-        <g ref='graph'/>
+        <g ref="graph"/>
       </svg>
     );
   }
