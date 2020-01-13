@@ -23,7 +23,7 @@ class NetworkGraph extends Component {
     .nodes(nodes);
 
     simulation
-      .force("charge_force", d3.forceManyBody().strength(-2000))
+      .force("charge_force", d3.forceManyBody().strength(-900))
       .force("center_force", d3.forceCenter(width / 2, height / 2))
 
     const group = d3.select(this.refs.graph)
@@ -62,7 +62,6 @@ class NetworkGraph extends Component {
         .attr("stroke-width", linkWidth)
 
     function circleColor(d){
-      console.log(d);
         if(d.name.length <= 7){
         return "#fd267d";
       } else {
@@ -75,7 +74,6 @@ class NetworkGraph extends Component {
   // }
 
     function linkWidth(d) {
-      console.log(d);
       if(d.strength >= 0.01) {
         return "7";
       } else {
@@ -101,7 +99,7 @@ class NetworkGraph extends Component {
 
   render() {
     return (
-      <svg width="1000" height="600">
+      <svg width="900" height="600">
         <g ref="graph"/>
       </svg>
     );
