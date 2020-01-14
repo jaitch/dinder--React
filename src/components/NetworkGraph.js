@@ -118,7 +118,7 @@ class NetworkGraph extends Component {
 
   render() {
     return (
-      <svg width="110" height="900">
+      <svg width="1100" height="900">
         <g ref="graph"/>
       </svg>
     );
