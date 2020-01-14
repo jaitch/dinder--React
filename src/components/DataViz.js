@@ -9,8 +9,8 @@ class DataViz extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      soughtIngredient: '',
-      foundIngredient_id: '',
+      soughtIngredient_name: '',
+      foundIngredient_name: '',
       nodes_data: [],
       links_data: [],
       error: '',
@@ -41,31 +41,31 @@ class DataViz extends Component {
 
   onInputChange = (event) => {
     this.setState({
-      soughtIngredient: event.target.value,
+      soughtIngredient_name: event.target.value,
     });
-    console.log(`updated! looking for: ${this.state.soughtIngredient}`)
+    console.log(`updated! looking for: ${this.state.soughtIngredient_name}`)
   }
 
   onSubmit = (event) => {
     event.preventDefault();
-    axios.get(`${this.props.url}/ingredient/${this.state.soughtIngredient}`)
+    axios.get(`${this.props.url}/ingredient/${this.state.soughtIngredient_name}`)
       .then((response) => {
-        console.log(response)
-        const ingredient = response.data["response"][0]
-        console.log(ingredient)
-        console.log(`ingredient_id: ${ingredient["id"]}`)
-        this.setState({foundIngredient_id: ingredient.id });
-        console.log(`ingredient in state: ${this.state.foundIngredient_id}`)
+        console.log(response.data)
+        // format for calling single ingredient: response.data.ing_data[0]
+        this.setState({foundIngredient_name: this.state.soughtIngredient_name });
+        console.log(`found ingredient in state: ${this.state.foundIngredient_name}`)
       })
       .catch((errors) => {
         this.setState({ error: errors.title });
-        console.log(`errors: ${errors.title}`)
+        console.log(`errors: ${errors}`)
       });
       // If I have time: use Feedback to display 'No Search Results' message
 
       this.setState({
         soughtIngredient: '',
       });
+
+
     }
 
   render() {
