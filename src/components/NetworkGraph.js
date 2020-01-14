@@ -63,16 +63,20 @@ class NetworkGraph extends Component {
       .attr("fill", circleColor)
       .style("opacity", circleOpacity)
       .style("stroke", 'black')
-      .on('mouseover', function() {
-        d3.select(this)
-          .transition()
-          .attr('fill', '#fd267d');
+      .on('mouseover', function(d) {
+        if(d !== nodes[0]){
+          d3.select(this)
+            .transition()
+            .attr('fill', '#fd267d');
+        }
       })
-      .on('mouseout', function() {
-        d3.select(this)
-          .transition()
-          .duration(100)
-          .attr('fill', '#ff7854');
+      .on('mouseout', function(d) {
+        if(d !== nodes[0]){
+          d3.select(this)
+            .transition()
+            .duration(100)
+            .attr('fill', '#ff7854');
+        }
       })
       // .on('click', this.props.findNewSimilaritiesCallback(d[0].name))
       // or d.name?
@@ -114,13 +118,6 @@ class NetworkGraph extends Component {
     }
 
     function circleSize(d){
-      // if(d.strength >= 0.1) {
-      //   return "50";
-      // } else if (d.strength < .1 && d.strength >= .05) {
-      //   return "30";
-      // } else {
-      //   return "10";
-      // }
       if (d.strength === 1) {
         return 50
       }
