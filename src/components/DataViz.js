@@ -51,13 +51,15 @@ class DataViz extends Component {
     axios.get(`${this.props.url}/ingredient/${this.state.soughtIngredient}`)
       .then((response) => {
         console.log(response)
-        const ingredient = response.data.data[0]
-        console.log(`ingredient_id: ${ingredient.id}`)
+        const ingredient = response.data["response"][0]
+        console.log(ingredient)
+        console.log(`ingredient_id: ${ingredient["id"]}`)
         this.setState({foundIngredient_id: ingredient.id });
+        console.log(`ingredient in state: ${this.state.foundIngredient_id}`)
       })
       .catch((errors) => {
         this.setState({ error: errors.title });
-        console.log(errors.title)
+        console.log(`errors: ${errors.title}`)
       });
       // If I have time: use Feedback to display 'No Search Results' message
 
