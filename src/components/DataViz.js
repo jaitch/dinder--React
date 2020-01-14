@@ -17,25 +17,25 @@ class DataViz extends Component {
   }
 
   componentDidMount() {
-    axios.get(`${this.props.url}/json/nodes.json`)
-    .then((response) => {
-      this.setState({nodes_data: response.data });
-      console.log(this.state.nodes_data)
-    })
-    .catch((error) => {
-      this.setState({ error: error });
-      console.log(error)
-    });
+    // axios.get(`${this.props.url}/json/nodes.json`)
+    // .then((response) => {
+    //   this.setState({nodes_data: response.data });
+    //   console.log(this.state.nodes_data)
+    // })
+    // .catch((error) => {
+    //   this.setState({ error: error });
+    //   console.log(error)
+    // });
 
-    axios.get(`${this.props.url}/json/links.json`)
-    .then((response) => {
-      this.setState({links_data: response.data });
-      console.log(this.state.links_data)
-    })
-    .catch((error) => {
-      this.setState({ error: error });
-      console.log(error)
-    })
+    // axios.get(`${this.props.url}/json/links.json`)
+    // .then((response) => {
+    //   this.setState({links_data: response.data });
+    //   console.log(this.state.links_data)
+    // })
+    // .catch((error) => {
+    //   this.setState({ error: error });
+    //   console.log(error)
+    // })
   }
 
   onInputChange = (event) => {
@@ -53,23 +53,40 @@ class DataViz extends Component {
         // format for calling single ingredient: response.data.ing_data[0]
         this.setState({
           graphData: response.data,
-          ing_found: true
+          ing_found: true,
+          soughtIngredient_name: '',
         });
       })
       .catch((errors) => {
         this.setState({
+          ing_found: false,
           error: errors.title,
-          ing_found: false
         });
         console.log(`errors: ${errors}`)
       });
       // If I have time: use Feedback to display 'No Search Results' message
+  }
 
+  findNewSimilarities = (ingredient) => {
+    axios.get(`${this.props.url}/ingredient/${ingredient}`)
+    .then((response) => {
+      console.log(response.data)
       this.setState({
-        soughtIngredient: '',
+        graphData: response.data,
+        ing_found: true,
+        soughtIngredient_name: '',
       });
+    })
+    .catch((errors) => {
+      this.setState({
+        ing_found: false,
+        error: errors.title,
+      });
+      console.log(`errors: ${errors}`)
+    });
+  }
 
-    }
+
 
   render() {
 
@@ -77,12 +94,12 @@ class DataViz extends Component {
       <div>
         <form className="form" onSubmit={this.onSubmit}>
           <div className="search-box">
-            <label className="text" htmlFor="text">Start with an ingredient: </label>
+            <label className="text" htmlFor="text">What are you cooking with? </label>
           </div>
           <div className="search-box">
             <input
               type="text"
-              placeholder="ingredient"
+              placeholder="ingredient (singular)"
               name="ingredient"
               onChange={this.onInputChange}
               value={this.state.soughtIngredient}>
@@ -98,7 +115,7 @@ class DataViz extends Component {
         </form>
       <div>
         {this.state.ing_found === true &&
-        <NetworkGraph data={this.state.graphData}/>
+        <NetworkGraph data={this.state.graphData} findNewSimilaritiesCallback={this.findNewSimilarities}/>
         }
       </div>
     </div>

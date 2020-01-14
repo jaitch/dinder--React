@@ -7,10 +7,16 @@ import './NetworkGraph.css';
 class NetworkGraph extends Component {
 
   componentDidMount() {
+    if (!this.props.data.ing_data) {
+      return
+    }
     this.drawGraph(this.props.data);
   }
 
   componentDidUpdate() {
+    if (!this.props.data.ing_data) {
+      return
+    }
     this.drawGraph(this.props.data);
   }
 
@@ -20,10 +26,11 @@ class NetworkGraph extends Component {
     }
     const { ing_data } = data
     console.log(ing_data[0]);
-    const nodes = [{"id": ing_data[0].source_id, "name": ing_data[0].source_name}, ...ing_data.map(r => {
+    const nodes = [{"id": ing_data[0].source_id, "name": ing_data[0].source_name, "strength": 1}, ...ing_data.map(r => {
       return {
         "id": r.target_id,
-        "name": r.target
+        "name": r.target,
+        "strength": r.strength
       }})];
     const links = ing_data.map(r => {
       return {
@@ -52,9 +59,23 @@ class NetworkGraph extends Component {
       .data(nodes)
       .enter()
       .append("circle")
-      .attr("r", 30)
+      .attr("r", circleSize)
       .attr("fill", circleColor)
+      .style("opacity", circleOpacity)
       .style("stroke", 'black')
+      .on('mouseover', function() {
+        d3.select(this)
+          .transition()
+          .attr('fill', '#fd267d');
+      })
+      .on('mouseout', function() {
+        d3.select(this)
+          .transition()
+          .duration(100)
+          .attr('fill', '#ff7854');
+      })
+      // .on('click', this.props.findNewSimilaritiesCallback(d[0].name))
+      // or d.name?
 
     const textElements = group2
       .selectAll('text')
@@ -66,11 +87,12 @@ class NetworkGraph extends Component {
         .attr('dy', 4)
 
     const link = group
-    .attr("class", "links")
-  .selectAll("line")
-  .data(links)
-  .enter().append("line")
-    .attr("stroke-width", linkWidth)
+      .attr("class", "links")
+    .selectAll("line")
+    .data(links)
+    .enter().append("line")
+      .attr("stroke-width", 1.5)
+      .style("opacity", .6)
 
     simulation.on("tick", tickActions );
 
@@ -79,26 +101,30 @@ class NetworkGraph extends Component {
 
     simulation.force("links",link_force)
 
-
-
     function circleColor(d){
-        if(d.name.length <= 7){
+      if(d === nodes[0]) {
         return "#fd267d";
       } else {
         return "#ff7854";
       }
     }
 
-  // function circleSize(d){
+    function circleOpacity(d){
 
-  // }
+    }
 
-    function linkWidth(d) {
-      if(d.strength >= 0.01) {
-        return "7";
-      } else {
-        return "2";
+    function circleSize(d){
+      // if(d.strength >= 0.1) {
+      //   return "50";
+      // } else if (d.strength < .1 && d.strength >= .05) {
+      //   return "30";
+      // } else {
+      //   return "10";
+      // }
+      if (d.strength === 1) {
+        return 50
       }
+      return 600 * d.strength
     }
 
     function tickActions() {
@@ -129,8 +155,7 @@ class NetworkGraph extends Component {
 
 
 NetworkGraph.propTypes = {
-  // nodes:
-  // links:
+  findNewSimilaritiesCallback: PropTypes.func.isRequired,
 }
 export default NetworkGraph;
 
