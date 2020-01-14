@@ -78,8 +78,11 @@ class NetworkGraph extends Component {
             .attr('fill', '#ff7854');
         }
       })
-      // .on('click', this.props.findNewSimilaritiesCallback(d[0].name))
-      // or d.name?
+      .on('click', (d)  => {
+        console.log(d["name"])
+        this.props.findNewSimilaritiesCallback(d["name"]);
+      })
+
 
     const textElements = group2
       .selectAll('text')
