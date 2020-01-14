@@ -18,43 +18,42 @@ class DataViz extends Component {
   }
 
   componentDidMount() {
-    // axios.get(`${this.props.url}/json/nodes.json`)
-    // .then((response) => {
-    //   this.setState({nodes_data: response.data });
-    //   console.log(this.state.nodes_data)
-    // })
-    // .catch((error) => {
-    //   this.setState({ error: error });
-    //   console.log(error)
-    // });
+    axios.get(`${this.props.url}/json/nodes.json`)
+    .then((response) => {
+      this.setState({nodes_data: response.data });
+      console.log(this.state.nodes_data)
+    })
+    .catch((error) => {
+      this.setState({ error: error });
+      console.log(error)
+    });
 
-    // axios.get(`${this.props.url}/json/links.json`)
-    // .then((response) => {
-    //   this.setState({links_data: response.data });
-    //   console.log(this.state.links_data)
-    // })
-    // .catch((error) => {
-    //   this.setState({ error: error });
-    //   console.log(error)
-    // })
+    axios.get(`${this.props.url}/json/links.json`)
+    .then((response) => {
+      this.setState({links_data: response.data });
+      console.log(this.state.links_data)
+    })
+    .catch((error) => {
+      this.setState({ error: error });
+      console.log(error)
+    })
   }
 
   onInputChange = (event) => {
-    console.log(`former sought ingredient space: ${this.state.soughtIngredient}`)
     this.setState({
       soughtIngredient: event.target.value,
     });
-    console.log(`updated: ${this.state.soughtIngredient}`)
+    console.log(`updated! looking for: ${this.state.soughtIngredient}`)
   }
 
   onSubmit = (event) => {
     event.preventDefault();
     axios.get(`${this.props.url}/ingredient/${this.state.soughtIngredient}`)
       .then((response) => {
-        console.log(response.data)
-        // const ingredient = response.data.data[0]
-        // console.log(`ingredient_id: ${ingredient.id}`)
-        // this.setState({foundIngredient_id: ingredient.id });
+        console.log(response)
+        const ingredient = response.data.data[0]
+        console.log(`ingredient_id: ${ingredient.id}`)
+        this.setState({foundIngredient_id: ingredient.id });
       })
       .catch((errors) => {
         this.setState({ error: errors.title });

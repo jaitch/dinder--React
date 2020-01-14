@@ -34,7 +34,7 @@ class NetworkGraph extends Component {
       .data(nodes)
       .enter()
       .append("circle")
-      .attr("r", 40)
+      .attr("r", 30)
       .attr("fill", circleColor)
       .style("stroke", 'black')
 
