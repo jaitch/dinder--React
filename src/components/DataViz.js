@@ -10,8 +10,8 @@ class DataViz extends Component {
     super(props);
     this.state = {
       soughtIngredient_name: '',
-      foundIngredient_name: '',
       graph_data: [],
+      ing_found: false,
       error: '',
     }
   }
@@ -52,13 +52,15 @@ class DataViz extends Component {
         console.log(response.data)
         // format for calling single ingredient: response.data.ing_data[0]
         this.setState({
-          foundIngredient_name: this.state.soughtIngredient_name,
-          graphData: response.data
+          graphData: response.data,
+          ing_found: true
         });
-        console.log(`found ingredient in state: ${this.state.foundIngredient_name}`)
       })
       .catch((errors) => {
-        this.setState({ error: errors.title });
+        this.setState({
+          error: errors.title,
+          ing_found: false
+        });
         console.log(`errors: ${errors}`)
       });
       // If I have time: use Feedback to display 'No Search Results' message
@@ -95,7 +97,9 @@ class DataViz extends Component {
           </div>
         </form>
       <div>
-        <NetworkGraph ingredient={this.state.foundIngredient_id} data={this.state.graphData}/>
+        {this.state.ing_found === true &&
+        <NetworkGraph data={this.state.graphData}/>
+        }
       </div>
     </div>
     )

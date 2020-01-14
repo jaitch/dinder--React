@@ -15,7 +15,7 @@ class NetworkGraph extends Component {
   }
 
   drawGraph(data) {
-    if(!data) {
+    if (!data.ing_data) {
       return
     }
     const { ing_data } = data
@@ -40,7 +40,7 @@ class NetworkGraph extends Component {
     .nodes(nodes);
 
     simulation
-      .force("charge_force", d3.forceManyBody().strength(-900))
+      .force("charge_force", d3.forceManyBody().strength(-3000))
       .force("center_force", d3.forceCenter(width / 2, height / 2))
 
     const group = d3.select(this.refs.graph)
@@ -125,7 +125,6 @@ class NetworkGraph extends Component {
 
 
 NetworkGraph.propTypes = {
-  ingredient:PropTypes.string.isRequired,
   // nodes:
   // links:
 }
