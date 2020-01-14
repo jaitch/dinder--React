@@ -43,9 +43,10 @@ class NetworkGraph extends Component {
       .force("charge_force", d3.forceManyBody().strength(-3000))
       .force("center_force", d3.forceCenter(width / 2, height / 2))
 
-    const group = d3.select(this.refs.graph)
+    const group = d3.select(this.refs.links)
+    const group2 = d3.select(this.refs.nodes)
 
-    const node = group
+    const node = group2
       .attr("class", "nodes")
       .selectAll("circle")
       .data(nodes)
@@ -55,7 +56,7 @@ class NetworkGraph extends Component {
       .attr("fill", circleColor)
       .style("stroke", 'black')
 
-    const textElements = group
+    const textElements = group2
       .selectAll('text')
       .data(nodes)
       .enter().append('text')
@@ -119,7 +120,8 @@ class NetworkGraph extends Component {
   render() {
     return (
       <svg width="1100" height="900">
-        <g ref="graph"/>
+        <g ref="links"/>
+        <g ref="nodes"/>
       </svg>
     );
   }
