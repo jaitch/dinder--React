@@ -1,20 +1,37 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
 import PropTypes from 'prop-types';
-import './NetworkGraph.css'
+import './NetworkGraph.css';
 
 
 class NetworkGraph extends Component {
 
   componentDidMount() {
-    this.drawGraph(this.props.nodes, this.props.links);
+    this.drawGraph(this.props.data);
   }
 
   componentDidUpdate() {
-    this.drawGraph(this.props.nodes, this.props.links);
+    this.drawGraph(this.props.data);
   }
 
-  drawGraph(nodes, links) {
+  drawGraph(data) {
+    if(!data) {
+      return
+    }
+    const { ing_data } = data
+    console.log(ing_data[0]);
+    const nodes = [{"id": ing_data[0].source_id, "name": ing_data[0].source_name}, ...ing_data.map(r => {
+      return {
+        "id": r.target_id,
+        "name": r.target
+      }})];
+    const links = ing_data.map(r => {
+      return {
+        "source": r.source_id,
+        "target": r.target_id,
+        "strength": r.strength
+      }});
+
     const svg = d3.select("svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height");

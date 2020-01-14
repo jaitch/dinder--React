@@ -11,8 +11,7 @@ class DataViz extends Component {
     this.state = {
       soughtIngredient_name: '',
       foundIngredient_name: '',
-      nodes_data: [],
-      links_data: [],
+      graph_data: [],
       error: '',
     }
   }
@@ -52,7 +51,10 @@ class DataViz extends Component {
       .then((response) => {
         console.log(response.data)
         // format for calling single ingredient: response.data.ing_data[0]
-        this.setState({foundIngredient_name: this.state.soughtIngredient_name });
+        this.setState({
+          foundIngredient_name: this.state.soughtIngredient_name,
+          graphData: response.data
+        });
         console.log(`found ingredient in state: ${this.state.foundIngredient_name}`)
       })
       .catch((errors) => {
@@ -64,7 +66,6 @@ class DataViz extends Component {
       this.setState({
         soughtIngredient: '',
       });
-
 
     }
 
@@ -94,7 +95,7 @@ class DataViz extends Component {
           </div>
         </form>
       <div>
-        <NetworkGraph ingredient={this.state.foundIngredient_id} nodes={this.state.nodes_data} links={this.state.links_data}/>
+        <NetworkGraph ingredient={this.state.foundIngredient_id} data={this.state.graphData}/>
       </div>
     </div>
     )
