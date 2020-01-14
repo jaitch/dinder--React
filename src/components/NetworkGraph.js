@@ -64,6 +64,13 @@ class NetworkGraph extends Component {
         .attr('dx', 15)
         .attr('dy', 4)
 
+    const link = group
+    .attr("class", "links")
+  .selectAll("line")
+  .data(links)
+  .enter().append("line")
+    .attr("stroke-width", linkWidth)
+
     simulation.on("tick", tickActions );
 
     const link_force =  d3.forceLink(links)
@@ -71,12 +78,7 @@ class NetworkGraph extends Component {
 
     simulation.force("links",link_force)
 
-    const link = group
-        .attr("class", "links")
-      .selectAll("line")
-      .data(links)
-      .enter().append("line")
-        .attr("stroke-width", linkWidth)
+
 
     function circleColor(d){
         if(d.name.length <= 7){
@@ -116,7 +118,7 @@ class NetworkGraph extends Component {
 
   render() {
     return (
-      <svg width="900" height="600">
+      <svg width="110" height="900">
         <g ref="graph"/>
       </svg>
     );
