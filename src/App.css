@@ -19,20 +19,20 @@
   font-size: calc(50px + 2vmin);
   font-weight: bolder;
   color: white;
-  height: 175px;
+  height: 125px;
   padding: 70px;
 }
 
 .App-logo {
   height: 150px;
   position: absolute;
-  top: 60px;
+  top: 20px;
   left: 65px;
 }
 
 .App-brand {
   position: absolute;
-  top: 100px;
+  top: 80px;
   left: 45px;
   font-weight: 900;
 }
@@ -41,14 +41,14 @@
   font-size: calc(130px + 2vmin);
   position: absolute;
   left: 225px;
-  top: -35px;
+  top: -85px;
 }
 
 .App-subtitle {
   font-size: 1em;
   position: absolute;
   right: 75px;
-  top: 150px;
+  top: 100px;
   color: black
 }
 
