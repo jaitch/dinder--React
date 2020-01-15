@@ -93,8 +93,8 @@ class DataViz extends Component {
     return (
       <div>
         <form className="form" onSubmit={this.onSubmit}>
-          <div className="search-box">
-            <label className="text" htmlFor="text">What are you cooking with? </label>
+          <div className="search-area">
+            <label className="text" htmlFor="text">What's Cookin'?</label>
           </div>
           <div className="search-box">
             <input

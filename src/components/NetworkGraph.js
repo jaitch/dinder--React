@@ -41,7 +41,8 @@ class NetworkGraph extends Component {
 
     const svg = d3.select("svg"),
     width = +svg.attr("width"),
-    height = +svg.attr("height");
+    height = +svg.attr("height")
+    // const padding = "5";
 
     const simulation = d3.forceSimulation()
     .nodes(nodes);
@@ -59,6 +60,8 @@ class NetworkGraph extends Component {
       .data(nodes)
       .enter()
       .append("circle")
+      // .attr("width", width - padding )
+      // .attr("height", height - padding)
       .attr("r", circleSize)
       .attr("fill", circleColor)
       .style("opacity", circleOpacity)
