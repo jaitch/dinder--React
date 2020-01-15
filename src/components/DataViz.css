@@ -35,8 +35,14 @@ input {
   height: 100%;
   padding: 10px 20px;
   box-sizing: border-box;
+  background-color: white;
   font-size: 1em;
 }
+
+input:focus {
+  background-color: white;
+}
+
 
 .search-box {
   height: 20px;
