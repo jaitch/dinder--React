@@ -83,6 +83,7 @@ class NetworkGraph extends Component {
       })
       .on('click', (d)  => {
         console.log(d["name"])
+        d3.selectAll('g > *').remove()
         this.props.findNewSimilaritiesCallback(d["name"]);
       })
 
@@ -127,7 +128,7 @@ class NetworkGraph extends Component {
       if (d.strength === 1) {
         return 50
       }
-      return 600 * d.strength
+      return 450 * d.strength
     }
 
     function tickActions() {
