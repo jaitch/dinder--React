@@ -48,7 +48,7 @@ class NetworkGraph extends Component {
     .nodes(nodes);
 
     simulation
-      .force("charge_force", d3.forceManyBody().strength(-3000))
+      .force("charge_force", d3.forceManyBody().strength(-2500))
       .force("center_force", d3.forceCenter(width / 2, height / 2))
 
     const group = d3.select(this.refs.links)
