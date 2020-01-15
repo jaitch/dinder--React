@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/dinder/static/css/main.500fb603.chunk.css",
+    "main.js": "/dinder/static/js/main.da8c63eb.chunk.js",
+    "main.js.map": "/dinder/static/js/main.da8c63eb.chunk.js.map",
+    "runtime-main.js": "/dinder/static/js/runtime-main.bf11df02.js",
+    "runtime-main.js.map": "/dinder/static/js/runtime-main.bf11df02.js.map",
+    "static/js/2.23bbc30e.chunk.js": "/dinder/static/js/2.23bbc30e.chunk.js",
+    "static/js/2.23bbc30e.chunk.js.map": "/dinder/static/js/2.23bbc30e.chunk.js.map",
+    "index.html": "/dinder/index.html",
+    "precache-manifest.08e25692e3e8319a5108225fd9529e81.js": "/dinder/precache-manifest.08e25692e3e8319a5108225fd9529e81.js",
+    "service-worker.js": "/dinder/service-worker.js",
+    "static/css/main.500fb603.chunk.css.map": "/dinder/static/css/main.500fb603.chunk.css.map",
+    "static/js/2.23bbc30e.chunk.js.LICENSE": "/dinder/static/js/2.23bbc30e.chunk.js.LICENSE",
+    "static/media/pan-icon-3.png": "/dinder/static/media/pan-icon-3.5d80a88a.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bf11df02.js",
+    "static/js/2.23bbc30e.chunk.js",
+    "static/css/main.500fb603.chunk.css",
+    "static/js/main.da8c63eb.chunk.js"
+  ]
+}
