@@ -102,7 +102,8 @@ class DataViz extends Component {
               placeholder="ingredient (singular)"
               name="ingredient"
               onChange={this.onInputChange}
-              value={this.state.soughtIngredient}>
+              value={this.state.soughtIngredient}
+              >
             </input>
           </div>
 
@@ -110,7 +111,13 @@ class DataViz extends Component {
             <input
               type="submit"
               value="Search"
-              onClick={this.onSubmit} className="submit-btn"/>
+              onClick={this.onSubmit}
+              onKeyPress={event => {
+                if (event.key === 'Enter') {
+                  this.onSubmit()
+                }
+              }}
+              className="submit-btn"/>
           </div>
         </form>
       <div>

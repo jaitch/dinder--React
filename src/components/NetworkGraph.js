@@ -17,6 +17,7 @@ class NetworkGraph extends Component {
     if (!this.props.data.ing_data) {
       return
     }
+    d3.selectAll('g > *').remove()
     this.drawGraph(this.props.data);
   }
 
@@ -83,7 +84,7 @@ class NetworkGraph extends Component {
       })
       .on('click', (d)  => {
         console.log(d["name"])
-        d3.selectAll('g > *').remove()
+        // d3.selectAll('g > *').remove()
         this.props.findNewSimilaritiesCallback(d["name"]);
       })
 
