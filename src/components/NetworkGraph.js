@@ -181,6 +181,7 @@ class NetworkGraph extends Component {
     let myAxios = axios.create({
       paramsSerializer: params => qs.stringify(params, {arrayFormat: 'repeat'})
     })
+    console.log(params)
     myAxios.get(`${this.props.url}/recipes/`,{params})
       .then((response) => {
         console.log(response.data)
