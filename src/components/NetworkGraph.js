@@ -3,7 +3,9 @@ import * as d3 from 'd3';
 import PropTypes from 'prop-types';
 import './NetworkGraph.css';
 import axios from 'axios';
+import qs from 'qs';
 import RecipeSearch from './RecipeSearch'
+import RecipeList from './RecipeList'
 
 
 class NetworkGraph extends Component {
@@ -60,7 +62,7 @@ class NetworkGraph extends Component {
     .nodes(nodes);
 
     simulation
-      .force("charge_force", d3.forceManyBody().strength(-2500))
+      .force("charge_force", d3.forceManyBody().strength(-2000))
       .force("center_force", d3.forceCenter(width / 2, height / 2))
 
     const group = d3.select(this.refs.links)
@@ -154,9 +156,9 @@ class NetworkGraph extends Component {
 
     function circleSize(d){
       if (d.strength === 1) {
-        return 50
+        return 45
       }
-      return 450 * d.strength
+      return 400 * d.strength
     }
 
     function tickActions() {
@@ -174,13 +176,16 @@ class NetworkGraph extends Component {
     }
   }
 
-  onSearch = () => {
-    // figure out this API call bc state variable is an array not a string
-    axios.get(`${this.props.url}/recipe/${this.state.recipeSearchIngredients}`)
+  onRecipeSearch = () => {
+    let params = { ings: this.state.recipeSearchIngredients}
+    let myAxios = axios.create({
+      paramsSerializer: params => qs.stringify(params, {arrayFormat: 'repeat'})
+    })
+    myAxios.get(`${this.props.url}/recipes/`,{params})
       .then((response) => {
         console.log(response.data)
         this.setState({
-          rec_found: response.data,
+          recFound: response.data,
           displayRecipes: true
         });
       })
@@ -196,16 +201,17 @@ class NetworkGraph extends Component {
   render() {
     return (
       <div className='container'>
-        {(this.state.displayRecipes === false) ?
+        {(this.state.displayRecipes === false)
+        ?
         <svg width="1100" height="900" className='graph'>
           <g ref="links"/>
           <g ref="nodes"/>
         </svg>
         :
-        <div> Recipe Results </div>
+        <div> <RecipeList list={this.state.recFound}/> </div>
         }
         <div className='Recipe-search'>
-          <RecipeSearch ings={this.state.recipeSearchIngredients} recipeSearchCallback={this.onSearch}/>
+          <RecipeSearch ings={this.state.recipeSearchIngredients} recipeSearchCallback={this.onRecipeSearch}/>
         </div>
       </div>
     );

@@ -17,7 +17,6 @@ class DataViz extends Component {
   }
 
   componentDidMount() {
-
   }
 
   onInputChange = (event) => {

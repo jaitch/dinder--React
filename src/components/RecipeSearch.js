@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './RecipeSearch.css'
 
 function RecipeSearch(props) {
 
@@ -13,7 +14,7 @@ function RecipeSearch(props) {
     <li>{ing}</li>);
 
     return(
-      <div className='search-box'>
+      <div className='recipe-search-box'>
         <h3 className='instructions'>To matchmake another ingredient, click on the circle.</h3>
         <h3>To add an ingredient to the recipe search, click on the name.</h3>
         <ul>
@@ -24,7 +25,7 @@ function RecipeSearch(props) {
             type="submit"
             value="Search"
             onClick={onClickSearch}
-            className="submit-btn"
+            className="recipe-submit-btn"
           />
         </div>
       </div>
