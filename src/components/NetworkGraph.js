@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as d3 from 'd3';
 import PropTypes from 'prop-types';
 import './NetworkGraph.css';
+import RecipeSearch from './RecipeSearch'
 
 
 class NetworkGraph extends Component {
@@ -72,7 +73,6 @@ class NetworkGraph extends Component {
       // .attr("height", height - padding)
       .attr("r", circleSize)
       .attr("fill", circleColor)
-      .style("opacity", circleOpacity)
       .style("stroke", 'black')
       .on('mouseover', function(d) {
         if(d !== nodes[0]){
@@ -145,10 +145,6 @@ class NetworkGraph extends Component {
       }
     }
 
-    function circleOpacity(d){
-
-    }
-
     function circleSize(d){
       if (d.strength === 1) {
         return 50
@@ -174,10 +170,15 @@ class NetworkGraph extends Component {
 
   render() {
     return (
-      <svg width="1100" height="900">
-        <g ref="links"/>
-        <g ref="nodes"/>
-      </svg>
+      <div>
+        <svg width="1100" height="900">
+          <g ref="links"/>
+          <g ref="nodes"/>
+        </svg>
+        <div className='Recipe-box'>
+          <RecipeSearch/>
+        </div>
+       </div>
     );
   }
 }

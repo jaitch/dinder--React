@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './pan-icon-3.png';
 import DataViz from './components/DataViz';
 import './App.css';
+import RecipeSearch from './components/RecipeSearch'
 
 class App extends Component {
   constructor(props) {
@@ -24,7 +25,6 @@ class App extends Component {
           <DataViz url={BASE_URL}/>
         </main>
         <footer>
-
         </footer>
       </div>
     );
