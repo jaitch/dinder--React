@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import logo from './pan-icon-3.png';
 import DataViz from './components/DataViz';
 import './App.css';
-import RecipeSearch from './components/RecipeSearch'
 
 class App extends Component {
   constructor(props) {
@@ -13,6 +12,7 @@ class App extends Component {
 
   render() {
     const BASE_URL = 'http://localhost:5000'
+    // const BASE_URL = 'https://dinder-flask.herokuapp.com/'
 
     return (
       <div className='App'>
