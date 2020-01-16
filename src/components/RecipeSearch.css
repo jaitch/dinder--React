@@ -1,10 +1,8 @@
-.container {
-  display: grid
+.search-box {
+
 }
 
-
-.Recipe-box {
-  position: absolute;
-  right: 75px;
-  top: 400px;
+.instructions {
+  font-size: 10px;
+  vertical-align: top;
 }

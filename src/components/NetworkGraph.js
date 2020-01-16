@@ -117,8 +117,12 @@ class NetworkGraph extends Component {
             .attr('font-weight', 'normal');
         })
         .on('click', (d)  => {
-
-          this.props.findNewSimilaritiesCallback(d["name"]);
+          let existing_ings = this.state.recipeSearchIngredients
+          let new_list = existing_ings.concat(d["name"])
+          this.setState({
+            recipeSearchIngredients: new_list
+          })
+          // future: if user makes a mistake, can click again (or something) to remove
         })
 
 
@@ -170,13 +174,13 @@ class NetworkGraph extends Component {
 
   render() {
     return (
-      <div>
-        <svg width="1100" height="900">
+      <div className='container'>
+        <svg width="1100" height="900" className='graph'>
           <g ref="links"/>
           <g ref="nodes"/>
         </svg>
-        <div className='Recipe-box'>
-          <RecipeSearch/>
+        <div className='Recipe-search'>
+          <RecipeSearch ings={this.state.recipeSearchIngredients}/>
         </div>
        </div>
     );
