@@ -6,6 +6,13 @@ import './NetworkGraph.css';
 
 class NetworkGraph extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      recipeSearchIngredients: []
+    }
+  }
+
   componentDidMount() {
     if (!this.props.data.ing_data) {
       return
@@ -84,7 +91,6 @@ class NetworkGraph extends Component {
       })
       .on('click', (d)  => {
         console.log(d["name"])
-        // d3.selectAll('g > *').remove()
         this.props.findNewSimilaritiesCallback(d["name"]);
       })
 
@@ -97,6 +103,24 @@ class NetworkGraph extends Component {
         .attr('font-size', 20)
         .attr('dx', 15)
         .attr('dy', 4)
+        .on('mouseover', function(d) {
+          d3.select(this)
+            .transition()
+            .attr('font-size', 25)
+            .attr('font-weight', 'bold');
+        })
+        .on('mouseout', function(d) {
+          d3.select(this)
+            .transition()
+            .duration(100)
+            .attr('font-size', 20)
+            .attr('font-weight', 'normal');
+        })
+        .on('click', (d)  => {
+
+          this.props.findNewSimilaritiesCallback(d["name"]);
+        })
+
 
     const link = group
       .attr("class", "links")

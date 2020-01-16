@@ -17,6 +17,7 @@ class DataViz extends Component {
   }
 
   componentDidMount() {
+
     // axios.get(`${this.props.url}/json/nodes.json`)
     // .then((response) => {
     //   this.setState({nodes_data: response.data });
@@ -112,11 +113,6 @@ class DataViz extends Component {
               type="submit"
               value="Search"
               onClick={this.onSubmit}
-              onKeyPress={event => {
-                if (event.key === 'Enter') {
-                  this.onSubmit()
-                }
-              }}
               className="submit-btn"/>
           </div>
         </form>
