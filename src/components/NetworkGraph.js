@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as d3 from 'd3';
 import PropTypes from 'prop-types';
 import './NetworkGraph.css';
+import axios from 'axios';
 import RecipeSearch from './RecipeSearch'
 
 
@@ -10,7 +11,9 @@ class NetworkGraph extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipeSearchIngredients: []
+      recipeSearchIngredients: [],
+      recFound: [],
+      displayRecipes: false
     }
   }
 
@@ -171,18 +174,40 @@ class NetworkGraph extends Component {
     }
   }
 
+  onSearch = () => {
+    // figure out this API call bc state variable is an array not a string
+    axios.get(`${this.props.url}/recipe/${this.state.recipeSearchIngredients}`)
+      .then((response) => {
+        console.log(response.data)
+        this.setState({
+          rec_found: response.data,
+          displayRecipes: true
+        });
+      })
+      .catch((errors) => {
+        this.setState({
+          error: errors.title,
+        });
+        console.log(`errors: ${errors}`)
+      });
+      // If I have time: display 'No Search Results' message
+  }
 
   render() {
     return (
       <div className='container'>
+        {(this.state.displayRecipes === false) ?
         <svg width="1100" height="900" className='graph'>
           <g ref="links"/>
           <g ref="nodes"/>
         </svg>
+        :
+        <div> Recipe Results </div>
+        }
         <div className='Recipe-search'>
-          <RecipeSearch ings={this.state.recipeSearchIngredients}/>
+          <RecipeSearch ings={this.state.recipeSearchIngredients} onSearchCallback={this.onSearch}/>
         </div>
-       </div>
+      </div>
     );
   }
 }

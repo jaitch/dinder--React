@@ -18,25 +18,6 @@ class DataViz extends Component {
 
   componentDidMount() {
 
-    // axios.get(`${this.props.url}/json/nodes.json`)
-    // .then((response) => {
-    //   this.setState({nodes_data: response.data });
-    //   console.log(this.state.nodes_data)
-    // })
-    // .catch((error) => {
-    //   this.setState({ error: error });
-    //   console.log(error)
-    // });
-
-    // axios.get(`${this.props.url}/json/links.json`)
-    // .then((response) => {
-    //   this.setState({links_data: response.data });
-    //   console.log(this.state.links_data)
-    // })
-    // .catch((error) => {
-    //   this.setState({ error: error });
-    //   console.log(error)
-    // })
   }
 
   onInputChange = (event) => {
@@ -65,7 +46,7 @@ class DataViz extends Component {
         });
         console.log(`errors: ${errors}`)
       });
-      // If I have time: use Feedback to display 'No Search Results' message
+      // If I have time: display 'No Search Results' message
   }
 
   findNewSimilarities = (ingredient) => {
@@ -104,16 +85,15 @@ class DataViz extends Component {
               name="ingredient"
               onChange={this.onInputChange}
               value={this.state.soughtIngredient}
-              >
-            </input>
+            />
           </div>
-
           <div>
             <input
               type="submit"
               value="Search"
               onClick={this.onSubmit}
-              className="submit-btn"/>
+              className="submit-btn"
+            />
           </div>
         </form>
       <div>
