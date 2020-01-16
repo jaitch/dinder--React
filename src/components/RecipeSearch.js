@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function RecipeSearch(props) {
+
+  const onClickSearch = () => {
+    props.recipeSearchCallback();
+  }
+
   const ings = props.ings
   if (ings !== []) {
     const listItems = ings.map((ing) =>
@@ -18,7 +23,8 @@ function RecipeSearch(props) {
           <input
             type="submit"
             value="Search"
-            onClick={this.onSearchCallback}
+            onClick={onClickSearch}
+            className="submit-btn"
           />
         </div>
       </div>
@@ -28,7 +34,7 @@ function RecipeSearch(props) {
 
 RecipeSearch.propTypes = {
   ings: PropTypes.array,
-  onSearchCallback: PropTypes.func
+  recipeSearchCallback: PropTypes.func
 }
 
 export default RecipeSearch

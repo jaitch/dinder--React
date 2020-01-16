@@ -33,11 +33,13 @@ class DataViz extends Component {
       .then((response) => {
         console.log(response.data)
         // format for calling single ingredient: response.data.ing_data[0]
-        this.setState({
-          graphData: response.data,
-          ing_found: true,
-          soughtIngredient_name: '',
-        });
+        if (response.data.ing_data.length > 0) {
+          this.setState({
+            graphData: response.data,
+            ing_found: true,
+            soughtIngredient_name: '',
+          });
+        }
       })
       .catch((errors) => {
         this.setState({
@@ -97,7 +99,7 @@ class DataViz extends Component {
           </div>
         </form>
       <div>
-        {this.state.ing_found === true &&
+        {(this.state.ing_found === true) &&
         <NetworkGraph data={this.state.graphData} findNewSimilaritiesCallback={this.findNewSimilarities}/>
         }
       </div>

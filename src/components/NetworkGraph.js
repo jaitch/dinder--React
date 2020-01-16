@@ -205,7 +205,7 @@ class NetworkGraph extends Component {
         <div> Recipe Results </div>
         }
         <div className='Recipe-search'>
-          <RecipeSearch ings={this.state.recipeSearchIngredients} onSearchCallback={this.onSearch}/>
+          <RecipeSearch ings={this.state.recipeSearchIngredients} recipeSearchCallback={this.onSearch}/>
         </div>
       </div>
     );
