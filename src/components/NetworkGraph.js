@@ -15,19 +15,19 @@ class NetworkGraph extends Component {
     this.state = {
       recipeSearchIngredients: [],
       recFound: [],
-      displayRecipes: false
+      displayRecipes: false,
     }
   }
 
   componentDidMount() {
-    if (!this.props.data.ing_data) {
+    if (this.props.data['ing_data']===[]) {
       return
     }
     this.drawGraph(this.props.data);
   }
 
   componentDidUpdate() {
-    if (!this.props.data.ing_data) {
+    if (this.props.data['ing_data']===[]) {
       return
     }
     d3.selectAll('g > *').remove()
@@ -35,9 +35,6 @@ class NetworkGraph extends Component {
   }
 
   drawGraph(data) {
-    if (!data.ing_data) {
-      return
-    }
     const { ing_data } = data
     console.log(ing_data[0]);
     const nodes = [{"id": ing_data[0].source_id, "name": ing_data[0].source_name, "strength": 1}, ...ing_data.map(r => {
@@ -206,14 +203,10 @@ class NetworkGraph extends Component {
   render() {
     return (
       <div className='container'>
-        {/* {(this.state.displayRecipes === false)
-        ? */}
         <svg width="1100" height="900" className='graph'>
           <g ref="links"/>
           <g ref="nodes"/>
         </svg>
-        {/* : */}
-        {/* } */}
         <div className='Recipe-search'>
           <RecipeSearch ings={this.state.recipeSearchIngredients} recipeSearchCallback={this.onRecipeSearch}/>
         </div>

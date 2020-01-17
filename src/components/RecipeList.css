@@ -1,6 +1,6 @@
 .recipe-list {
   position: absolute;
-  right: 200px;
+  right: 40px;
   top: 600px;
   max-width: 450px;
   list-style-type: none;
@@ -8,6 +8,6 @@
 
 .recipe-list-header {
   position: absolute;
-  right: 350px;
+  right: 300px;
   top: 550px;
 }
