@@ -99,7 +99,7 @@ class DataViz extends Component {
         </form>
       <div>
         {(this.state.ing_found === true) &&
-        <NetworkGraph data={this.state.graphData} findNewSimilaritiesCallback={this.findNewSimilarities}/>
+        <NetworkGraph data={this.state.graphData} findNewSimilaritiesCallback={this.findNewSimilarities} url={this.props.url}/>
         }
       </div>
     </div>

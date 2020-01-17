@@ -11,7 +11,7 @@ function RecipeSearch(props) {
   const ings = props.ings
   if (ings !== []) {
     const listItems = ings.map((ing) =>
-      <li key={ing}>{ing}</li>);
+      <li key={ing["id"]}>{ing["name"]}</li>);
 
     return(
       <div className='recipe-search-box'>

@@ -123,7 +123,7 @@ class NetworkGraph extends Component {
         })
         .on('click', (d)  => {
           let existing_ings = this.state.recipeSearchIngredients
-          let new_list = existing_ings.concat(d["name"])
+          let new_list = existing_ings.concat(d)
           this.setState({
             recipeSearchIngredients: new_list
           })
@@ -177,8 +177,10 @@ class NetworkGraph extends Component {
   }
 
   onRecipeSearch = () => {
-    let params = { ings: this.state.recipeSearchIngredients}
-    let myAxios = axios.create({
+    console.log(`before params ${this.state.recipeSearchIngredients}`)
+    const ing_ids = this.state.recipeSearchIngredients.map((ing) => ing["id"])
+    const params = { ing: ing_ids}
+    const myAxios = axios.create({
       paramsSerializer: params => qs.stringify(params, {arrayFormat: 'repeat'})
     })
     console.log(`these are the params ${params}`)
