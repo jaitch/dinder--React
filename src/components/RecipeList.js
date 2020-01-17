@@ -8,7 +8,7 @@ function RecipeList(props) {
   if (recipe_array !== []) {
     const recipe_list = recipe_array.map((rec) =>
       <li key={rec["_id"]}>
-        <a href="{rec['url']}"> {rec["name"]} </a>
+        <a href={rec['url']}> {rec["name"]} </a>
       </li>);
 
   return (
