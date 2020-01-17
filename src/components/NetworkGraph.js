@@ -187,10 +187,12 @@ class NetworkGraph extends Component {
     myAxios.get(`${this.props.url}/recipes/`,{params})
       .then((response) => {
         console.log(response.data)
-        this.setState({
-          recFound: response.data,
-          displayRecipes: true
-        });
+        if (response.data !== []) {
+          this.setState({
+            recFound: response.data,
+            displayRecipes: true
+          });
+        }
       })
       .catch((errors) => {
         this.setState({
@@ -204,18 +206,21 @@ class NetworkGraph extends Component {
   render() {
     return (
       <div className='container'>
-        {(this.state.displayRecipes === false)
-        ?
+        {/* {(this.state.displayRecipes === false)
+        ? */}
         <svg width="1100" height="900" className='graph'>
           <g ref="links"/>
           <g ref="nodes"/>
         </svg>
-        :
-        <div> <RecipeList list={this.state.recFound}/> </div>
-        }
+        {/* : */}
+        {/* } */}
         <div className='Recipe-search'>
           <RecipeSearch ings={this.state.recipeSearchIngredients} recipeSearchCallback={this.onRecipeSearch}/>
         </div>
+        { (this.state.displayREcipes === true)
+        &&
+          <div> <RecipeList list={this.state.recFound}/> </div>
+        }
       </div>
     );
   }
