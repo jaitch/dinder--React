@@ -1,5 +1,13 @@
 .recipe-list {
   position: absolute;
-  right: 40px;
+  right: 200px;
   top: 600px;
+  max-width: 450px;
+  list-style-type: none;
+}
+
+.recipe-list-header {
+  position: absolute;
+  right: 350px;
+  top: 550px;
 }
