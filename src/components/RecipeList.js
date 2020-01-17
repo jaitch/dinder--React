@@ -3,14 +3,16 @@ import PropTypes from 'prop-types';
 import './RecipeList.css'
 
 function RecipeList(props) {
-
-  const recipe_array = props.list["rec_data"].map(r => r["allData"])
+  const list = props.list
+  const recipe_array = list["rec_data"].map(r => r["allData"])
+  if (recipe_array !== []) {
+    const recipe_list = recipe_array.map((rec) =>
+      <li key={rec["_id"]}>{rec["name"]}</li>);
 
   return (
-
-    <div>{recipe_array[0].url}</div>
-
+    <ul className='recipe-list'>{recipe_list}</ul>
   )
+}
 }
 
 RecipeList.propTypes = {

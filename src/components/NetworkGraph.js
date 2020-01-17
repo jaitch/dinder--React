@@ -217,10 +217,12 @@ class NetworkGraph extends Component {
         <div className='Recipe-search'>
           <RecipeSearch ings={this.state.recipeSearchIngredients} recipeSearchCallback={this.onRecipeSearch}/>
         </div>
-        { (this.state.displayREcipes === true)
-        &&
-          <div> <RecipeList list={this.state.recFound}/> </div>
-        }
+          <div>
+          { (this.state.displayRecipes === true)
+          &&
+          <RecipeList list={this.state.recFound}/>
+          }
+        </div>
       </div>
     );
   }
