@@ -27,6 +27,12 @@ function RecipeSearch(props) {
             onClick={onClickSearch}
             className="recipe-submit-btn"
           />
+          <input
+            type="submit"
+            value="Clear"
+            onClick={() => props.onClickClearCallback()}
+            className="recipe-clear-btn"
+          />
         </div>
       </div>
     );
@@ -35,7 +41,8 @@ function RecipeSearch(props) {
 
 RecipeSearch.propTypes = {
   ings: PropTypes.array,
-  recipeSearchCallback: PropTypes.func
+  recipeSearchCallback: PropTypes.func,
+  onClickClearCallback: PropTypes.func
 }
 
 export default RecipeSearch

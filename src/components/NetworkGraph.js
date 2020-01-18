@@ -208,6 +208,13 @@ class NetworkGraph extends Component {
       });
   }
 
+  onRecipeClear = () => {
+    this.setState({
+      recipeSearchIngredients: [],
+      displayRecipes: false
+    })
+  }
+
   render() {
     return (
       <div className='container'>
@@ -216,7 +223,11 @@ class NetworkGraph extends Component {
           <g ref="nodes"/>
         </svg>
         <div className='Recipe-search'>
-          <RecipeSearch ings={this.state.recipeSearchIngredients} recipeSearchCallback={this.onRecipeSearch}/>
+          <RecipeSearch
+            ings={this.state.recipeSearchIngredients}
+            recipeSearchCallback={this.onRecipeSearch}
+            onClickClearCallback={this.onRecipeClear}
+          />
         </div>
           <div>
           { (this.state.displayRecipes === true)
