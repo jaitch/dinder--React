@@ -108,8 +108,7 @@ class DataViz extends Component {
         <NetworkGraph data={this.state.graphData} findNewSimilaritiesCallback={this.findNewSimilarities} url={this.props.url}/>
         }
       </div>
-      {/* <button onClick={this.notify}>Notify !</button> */}
-          <ToastContainer/>
+      <ToastContainer/>
     </div>
     )
   }

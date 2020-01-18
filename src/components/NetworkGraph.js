@@ -197,7 +197,6 @@ class NetworkGraph extends Component {
         });
         console.log(`errors: ${errors}`)
       });
-      // If I have time: display 'No Search Results' message
   }
 
   render() {
