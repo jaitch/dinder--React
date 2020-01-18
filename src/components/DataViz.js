@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import NetworkGraph from './NetworkGraph'
@@ -15,6 +16,8 @@ class DataViz extends Component {
       error: '',
     }
   }
+
+  notify = () => toast("Sorry! Ingredient not found.");
 
   componentDidMount() {
   }
@@ -38,6 +41,9 @@ class DataViz extends Component {
             ing_found: true,
             soughtIngredient_name: '',
           });
+        }
+        else {
+          this.notify()
         }
       })
       .catch((errors) => {
@@ -63,7 +69,7 @@ class DataViz extends Component {
     .catch((errors) => {
       this.setState({
         ing_found: false,
-        error: errors.title,
+        error: errors.title
       });
       console.log(`errors: ${errors}`)
     });
@@ -102,6 +108,8 @@ class DataViz extends Component {
         <NetworkGraph data={this.state.graphData} findNewSimilaritiesCallback={this.findNewSimilarities} url={this.props.url}/>
         }
       </div>
+      {/* <button onClick={this.notify}>Notify !</button> */}
+          <ToastContainer/>
     </div>
     )
   }
