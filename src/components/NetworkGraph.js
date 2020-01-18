@@ -120,13 +120,22 @@ class NetworkGraph extends Component {
         })
         .on('click', (d)  => {
           let existing_ings = this.state.recipeSearchIngredients
-          let new_list = existing_ings.concat(d)
-          this.setState({
-            recipeSearchIngredients: new_list
-          })
-          // future: if user makes a mistake, can click again (or something) to remove
+          if (existing_ings.length > 0) {
+            let just_ids = existing_ings.map( ing => ing["id"] )
+            if (just_ids.includes(d["id"])===false){
+              let new_list = existing_ings.concat(d)
+              this.setState({
+                recipeSearchIngredients: new_list
+              })
+            }
+            else return
+          }
+          else
+          {let new_list = existing_ings.concat(d)
+            this.setState({
+              recipeSearchIngredients: new_list
+            })}
         })
-
 
     const link = group
       .attr("class", "links")

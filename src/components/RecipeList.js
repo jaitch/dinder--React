@@ -5,7 +5,7 @@ import './RecipeList.css'
 
 function RecipeList(props) {
   const no_recs = () => {
-    toast("Sorry! No recipes for that combination.")
+    toast("Sorry! No recipes found for that combination.")
   };
   const list = props.list
   const recipe_array = list["rec_data"].map(r => r["allData"])
