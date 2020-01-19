@@ -4,10 +4,6 @@ import './RecipeSearch.css'
 
 function RecipeSearch(props) {
 
-  const onClickSearch = () => {
-    props.recipeSearchCallback();
-  }
-
   const ings = props.ings
   if (ings !== []) {
     const listItems = ings.map((ing) =>
@@ -24,7 +20,7 @@ function RecipeSearch(props) {
           <input
             type="submit"
             value="Search"
-            onClick={onClickSearch}
+            onClick={props.recipeSearchCallback()}
             className="recipe-submit-btn"
           />
           <input

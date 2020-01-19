@@ -32,7 +32,7 @@ function RecipeList(props) {
 }
 
 RecipeList.propTypes = {
-  // list: PropTypes
+  list: PropTypes.Array
 }
 
 export default RecipeList
