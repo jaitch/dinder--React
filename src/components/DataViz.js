@@ -24,14 +24,15 @@ class DataViz extends Component {
 
   onInputChange = (event) => {
     this.setState({
-      soughtIngredient_name: event.target.value.toLowerCase(),
+      soughtIngredient_name: event.target.value
     });
     console.log(`updated! looking for: ${this.state.soughtIngredient_name}`)
   }
 
   onSubmit = (event) => {
     event.preventDefault();
-    axios.get(`${this.props.url}/ingredient/${this.state.soughtIngredient_name}`)
+    let soughtIngredient = this.state.soughtIngredient_name.toLowerCase()
+    axios.get(`${this.props.url}/ingredient/${soughtIngredient}`)
       .then((response) => {
         console.log(response.data)
         // format for calling single ingredient: response.data.ing_data[0]
@@ -89,7 +90,7 @@ class DataViz extends Component {
             <input
               type="text"
               placeholder="ingredient (singular)"
-              onfocus={this.placeholder}
+              onFocus={this.placeholder}
               name="ingredient"
               onChange={this.onInputChange}
               value={this.state.soughtIngredient}
