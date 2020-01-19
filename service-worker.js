@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/dinder--React/precache-manifest.77c35e121e3d3e2b8d26c6b27ccc948c.js"
+  "/dinder--React/precache-manifest.986fc8be869b4649587b4a1185e42283.js"
 );
 
 self.addEventListener('message', (event) => {
