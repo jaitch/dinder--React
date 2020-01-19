@@ -89,6 +89,7 @@ class DataViz extends Component {
             <input
               type="text"
               placeholder="ingredient (singular)"
+              onfocus={this.placeholder}
               name="ingredient"
               onChange={this.onInputChange}
               value={this.state.soughtIngredient}

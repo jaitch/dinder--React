@@ -20,7 +20,7 @@ function RecipeList(props) {
   else {
     const recipe_list = recipe_array.map((rec) =>
       <li key={rec["_id"]}>
-        <a href={rec['url']}> {rec["name"]} </a>
+        <a href={rec['url']} target="_blank" rel="noopener noreferrer"> {rec["name"]} </a>
       </li>);
 
   return (
