@@ -24,7 +24,7 @@ class DataViz extends Component {
 
   onInputChange = (event) => {
     this.setState({
-      soughtIngredient_name: event.target.value,
+      soughtIngredient_name: event.target.value.toLowerCase(),
     });
     console.log(`updated! looking for: ${this.state.soughtIngredient_name}`)
   }
