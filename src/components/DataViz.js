@@ -109,6 +109,7 @@ class DataViz extends Component {
               max='.2'
               min='.01'
               step='.01'
+              onMouseUp={this.onSubmit}
               onChange={this.changeStrength}
               className='slider'
             />
@@ -123,7 +124,11 @@ class DataViz extends Component {
         </form>
       <div>
         {(this.state.ing_found === true) &&
-        <NetworkGraph data={this.state.graphData} findNewSimilaritiesCallback={this.findNewSimilarities} url={this.props.url}/>
+        <NetworkGraph
+          data={this.state.graphData}
+          findNewSimilaritiesCallback={this.findNewSimilarities}
+          url={this.props.url}
+        />
         }
       </div>
       <ToastContainer/>
