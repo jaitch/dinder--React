@@ -64,7 +64,7 @@ class DataViz extends Component {
       this.setState({
         graphData: response.data,
         ing_found: true,
-        soughtIngredient_name: '',
+        soughtIngredient_name: ingredient,
       });
     })
     .catch((errors) => {
@@ -112,7 +112,7 @@ class DataViz extends Component {
               onChange={this.changeStrength}
               className='slider'
             />
-            <p>strength of match</p>
+            <p>(adjust strength of match)</p>
             <input
               type="submit"
               value="Search"
