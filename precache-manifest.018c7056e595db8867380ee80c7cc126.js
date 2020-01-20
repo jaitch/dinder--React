@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "529bbfd35bcc3f7b1fb63d4a7c9f480b",
+    "revision": "0d7abf128caef798266b9ebb4cd45d50",
     "url": "/dinder--React/index.html"
   },
   {
-    "revision": "74471048b7e0e16f0d2f",
-    "url": "/dinder--React/static/css/main.62550e1b.chunk.css"
+    "revision": "6616d93ef140a5afcc9b",
+    "url": "/dinder--React/static/css/main.a357bf45.chunk.css"
   },
   {
     "revision": "a0b9ec00207cc2a0b7c9",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/dinder--React/static/js/2.6ebe777c.chunk.js.LICENSE"
   },
   {
-    "revision": "74471048b7e0e16f0d2f",
-    "url": "/dinder--React/static/js/main.36bc9c0d.chunk.js"
+    "revision": "6616d93ef140a5afcc9b",
+    "url": "/dinder--React/static/js/main.9a658ea6.chunk.js"
   },
   {
     "revision": "143d3bab226ada138939",
