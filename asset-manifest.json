@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/dinder--React/static/css/main.a357bf45.chunk.css",
-    "main.js": "/dinder--React/static/js/main.1ddb628f.chunk.js",
-    "main.js.map": "/dinder--React/static/js/main.1ddb628f.chunk.js.map",
+    "main.js": "/dinder--React/static/js/main.71f8de00.chunk.js",
+    "main.js.map": "/dinder--React/static/js/main.71f8de00.chunk.js.map",
     "runtime-main.js": "/dinder--React/static/js/runtime-main.37b193e9.js",
     "runtime-main.js.map": "/dinder--React/static/js/runtime-main.37b193e9.js.map",
     "static/js/2.6ebe777c.chunk.js": "/dinder--React/static/js/2.6ebe777c.chunk.js",
     "static/js/2.6ebe777c.chunk.js.map": "/dinder--React/static/js/2.6ebe777c.chunk.js.map",
     "index.html": "/dinder--React/index.html",
-    "precache-manifest.3e4ab3dd61f7bbf4d97e7bccb2738023.js": "/dinder--React/precache-manifest.3e4ab3dd61f7bbf4d97e7bccb2738023.js",
+    "precache-manifest.d45a2f0eb3dfaf129786f8434ea47a12.js": "/dinder--React/precache-manifest.d45a2f0eb3dfaf129786f8434ea47a12.js",
     "service-worker.js": "/dinder--React/service-worker.js",
     "static/css/main.a357bf45.chunk.css.map": "/dinder--React/static/css/main.a357bf45.chunk.css.map",
     "static/js/2.6ebe777c.chunk.js.LICENSE": "/dinder--React/static/js/2.6ebe777c.chunk.js.LICENSE",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.37b193e9.js",
     "static/js/2.6ebe777c.chunk.js",
     "static/css/main.a357bf45.chunk.css",
-    "static/js/main.1ddb628f.chunk.js"
+    "static/js/main.71f8de00.chunk.js"
   ]
 }
