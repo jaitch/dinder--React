@@ -59,3 +59,11 @@ input:focus {
   font-size: 2em;
   color: rgb(65, 182, 174)
 }
+
+.slider {
+  font-size: 1em;
+}
+
+p {
+  margin-top: 0;
+}

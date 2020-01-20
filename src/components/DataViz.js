@@ -14,6 +14,7 @@ class DataViz extends Component {
       graph_data: [],
       ing_found: false,
       error: '',
+      y: .01,
     }
   }
 
@@ -32,7 +33,7 @@ class DataViz extends Component {
   onSubmit = (event) => {
     event.preventDefault();
     let soughtIngredient = this.state.soughtIngredient_name.toLowerCase()
-    axios.get(`${this.props.url}/ingredient/${soughtIngredient}`)
+    axios.get(`${this.props.url}/ingredient/${soughtIngredient}/${this.state.y}`)
       .then((response) => {
         console.log(response.data)
         // format for calling single ingredient: response.data.ing_data[0]
@@ -40,7 +41,7 @@ class DataViz extends Component {
           this.setState({
             graphData: response.data,
             ing_found: true,
-            soughtIngredient_name: '',
+            // soughtIngredient_name: '',
           });
         }
         else {
@@ -54,11 +55,10 @@ class DataViz extends Component {
         });
         console.log(`errors: ${errors}`)
       });
-      // If I have time: display 'No Search Results' message
   }
 
   findNewSimilarities = (ingredient) => {
-    axios.get(`${this.props.url}/ingredient/${ingredient}`)
+    axios.get(`${this.props.url}/ingredient/${ingredient}/${this.state.y}`)
     .then((response) => {
       console.log(response.data)
       this.setState({
@@ -76,7 +76,12 @@ class DataViz extends Component {
     });
   }
 
-
+  changeStrength = (event) => {
+    this.setState({
+      y: event.target.value
+    })
+    console.log(`changed strength to ${this.state.y}`)
+  }
 
   render() {
 
@@ -90,13 +95,24 @@ class DataViz extends Component {
             <input
               type="text"
               placeholder="ingredient (singular)"
-              onFocus={this.placeholder}
+              // onFocus={this.placeholder}
               name="ingredient"
               onChange={this.onInputChange}
               value={this.state.soughtIngredient}
             />
           </div>
           <div>
+            <input
+              type = 'range'
+              axis="y"
+              value={this.state.y}
+              max='.2'
+              min='.01'
+              step='.01'
+              onChange={this.changeStrength}
+              className='slider'
+            />
+            <p>strength of match</p>
             <input
               type="submit"
               value="Search"
