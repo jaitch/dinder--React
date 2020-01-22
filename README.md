@@ -1,3 +1,13 @@
+
+Npm install: React, qs, d3, axios, react-toastify
+
+Toggle server in run.py
+To run locally: 
+FLASK_ENV=development DATABASE_URL=postgres://janicehuang:localhost/dinder python run.py
+
+Deployed on GitHub Pages https://jaitch.github.io/dinder--React/
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
