@@ -1,7 +1,8 @@
 
 Npm install: React, qs, d3, axios, react-toastify
 
-Toggle server in run.py
+Toggle server in run.py  
+
 To run locally: 
 FLASK_ENV=development DATABASE_URL=postgres://janicehuang:localhost/dinder python run.py
 
