@@ -1,3 +1,10 @@
+
+Npm install: React, qs, d3, axios, react-toastify
+
+
+Deployed on GitHub Pages https://jaitch.github.io/dinder--React/
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
