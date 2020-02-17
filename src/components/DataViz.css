@@ -1,7 +1,8 @@
 .submit-btn {
   flex: 0.5;
   margin: 1rem;
-  width: 50%;
+  width: 150px;
+  height: 45px;
   background-image: linear-gradient(262deg, #ff7854, #fd267d);
   transition: 0.25s;
   padding: 10px 20px;

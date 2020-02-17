@@ -12,7 +12,7 @@ class App extends Component {
 
   render() {
     const BASE_URL = 'http://localhost:5000'
-    // const BASE_URL = 'https://dinder-flask.herokuapp.com/'
+    // const BASE_URL = 'https://dinder-flask.herokuapp.com'
 
     return (
       <div className='App'>
